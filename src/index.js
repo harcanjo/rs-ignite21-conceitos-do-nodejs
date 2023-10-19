@@ -25,7 +25,15 @@ function checksExistsUserAccount(request, response, next) {
 }
 
 app.post('/users', (request, response) => {
-  // Complete aqui
+  const { name, username } = request.body;
+  const id = uuidv4();
+  users.push({
+    id,
+    name,
+    username,
+    todos: []
+  });
+  return response.status(201).send();
 });
 
 app.get('/todos', checksExistsUserAccount, (request, response) => {
